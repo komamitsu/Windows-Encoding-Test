@@ -34,3 +34,26 @@ tasks.withType(JavaCompile) {
 application {
     mainClass = 'org.example.Main'
 }
+
+integrationTest {
+    java {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+        srcDir file('src/integration-test/java')
+    }
+    resources.srcDir file('src/integration-test/resources')
+}
+
+configurations {
+    integrationTest.extendsFrom testImplementation
+    integrationTest.extendsFrom testRuntimeOnly
+    integrationTest.extendsFrom testCompileOnly
+}
+
+task integrationTest(type: Test) {
+    description = 'Runs the integration tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    outputs.upToDateWhen { false }  // ensures integration tests are run every time when called
+}
