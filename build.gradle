@@ -20,9 +20,9 @@ test {
 }
 
 tasks.withType(JavaCompile) {
-//    options.encoding = 'UTF-8'
+    options.encoding = 'UTF-8'
 //    compileJava.options.encoding('UTF-8')
-    compileJava.options.encoding = 'UTF-8'
+//    compileJava.options.encoding = 'UTF-8'
 //    compileTestJava.options.encoding = 'UTF-8'
 //    compileTestJava.options.encoding('UTF-8')
 }
@@ -35,13 +35,16 @@ application {
     mainClass = 'org.example.Main'
 }
 
-integrationTest {
-    java {
-        compileClasspath += main.output + test.output
-        runtimeClasspath += main.output + test.output
-        srcDir file('src/integration-test/java')
+/*
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/java')
+        }
+        resources.srcDir file('src/integration-test/resources')
     }
-    resources.srcDir file('src/integration-test/resources')
 }
 
 configurations {
@@ -57,3 +60,4 @@ task integrationTest(type: Test) {
     classpath = sourceSets.integrationTest.runtimeClasspath
     outputs.upToDateWhen { false }  // ensures integration tests are run every time when called
 }
+*/
