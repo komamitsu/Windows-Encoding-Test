@@ -20,7 +20,7 @@ test {
 }
 
 tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+//    options.encoding = 'UTF-8'
 //    compileJava.options.encoding('UTF-8')
 //    compileJava.options.encoding = 'UTF-8'
 //    compileTestJava.options.encoding = 'UTF-8'
