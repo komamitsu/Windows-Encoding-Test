@@ -25,7 +25,6 @@ tasks.withType(JavaCompile) {
     compileJava.options.encoding = 'UTF-8'
     compileTestJava.options.encoding = 'UTF-8'
     compileTestJava.options.encoding('UTF-8')
-    jvmArgs '-Dfile.encoding=UTF-8', '-Dencoding=UTF-8'
 }
 
 tasks.withType(Javadoc) {
