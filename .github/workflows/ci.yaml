@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  TERM: dumb
+
+jobs:
+  integration-test-for-cosmos:
+    name: Cosmos DB integration test
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }} (${{ env.JAVA_VENDOR }})
+        uses: actions/setup-java@v4
+        with:
+          java-version: 1.8
+
+      - name: Setup and execute Gradle task
+        uses: gradle/gradle-build-action@v3
+        with:
+          arguments: run
